@@ -34,7 +34,11 @@ def inference(model_inputs:dict) -> dict:
     num_inference_steps = model_inputs.get('num_inference_steps', 50)
     guidance_scale = model_inputs.get('guidance_scale', 7.5)
     input_seed = model_inputs.get("seed",None)
-    negative_prompt = negative_prompt+", " + NEGATIVE_PROMPT
+    if negative_prompt:
+
+        negative_prompt = negative_prompt+", " + NEGATIVE_PROMPT
+    else:
+        negative_prompt = NEGATIVE_PROMPT
     #If "seed" is not sent, we won't specify a seed in the call
     generator = None
     if input_seed != None:
