@@ -1,9 +1,12 @@
 import torch
 from torch import autocast
-from diffusers import StableDiffusionPipeline, LMSDiscreteScheduler
+from diffusers import StableDiffusionPipeline, LMSDiscreteScheduler, AutoencoderKL
 import base64
 from io import BytesIO
 import os
+
+
+NEGATIVE_PROMPT="floating limbs, disconnected limbs, kitsch, cartoon, fake, boring, long neck, out of frame, extra fingers, mutated hands, monochrome, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), ((ugly)), blurry, ((bad anatomy)), (((bad proportions))), ((extra limbs)), cloned face, glitchy, bokeh, (((long neck))), (child), (childlike), ((flat chested)), red eyes, multiple subjects, extra heads, close up, man, asian, text, bad anatomy, morphing, messy broken legs decay, ((simple background)), deformed body, lowres, bad anatomy, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low jpeg artifacts, signature, watermark, username, blurry, out of focus, old, amateur drawing, odd, fat, morphing, black and white, ((simple background)), artifacts, signature, artist name, [blurry], disfigured, mutated, (poorly hands), messy broken legs, decay, painting, duplicate, closeup",
 
 # Init is ran on server startup
 # Load your model to GPU as a global variable here using the variable name "model"
@@ -31,7 +34,7 @@ def inference(model_inputs:dict) -> dict:
     num_inference_steps = model_inputs.get('num_inference_steps', 50)
     guidance_scale = model_inputs.get('guidance_scale', 7.5)
     input_seed = model_inputs.get("seed",None)
-    
+    negative_prompt = negative_prompt+", " + NEGATIVE_PROMPT
     #If "seed" is not sent, we won't specify a seed in the call
     generator = None
     if input_seed != None:
@@ -45,9 +48,9 @@ def inference(model_inputs:dict) -> dict:
         images = model(prompt, negative_prompt=negative_prompt, height=height,width=width,num_inference_steps=num_inference_steps,guidance_scale=guidance_scale,generator=generator).images
     print(len(images))
 
-    buffered = BytesIO()
-    images[0].save(buffered,format="JPEG")
-    image_base64 = base64.b64encode(buffered.getvalue()).decode('utf-8')
+    # buffered = BytesIO()
+    # images[0].save(buffered,format="JPEG")
+    # image_base64 = base64.b64encode(buffered.getvalue()).decode('utf-8')
 
     # Return the results as a dictionary
     return {'image_base64': image_base64}
