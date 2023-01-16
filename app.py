@@ -5,9 +5,6 @@ import base64
 from io import BytesIO
 import os
 
-
-NEGATIVE_PROMPT="floating limbs, disconnected limbs, kitsch, cartoon, fake, boring, long neck, out of frame, extra fingers, mutated hands, monochrome, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), ((ugly)), blurry, ((bad anatomy)), (((bad proportions))), ((extra limbs)), cloned face, glitchy, bokeh, (((long neck))), (child), (childlike), ((flat chested)), red eyes, multiple subjects, extra heads, close up, man, asian, text, bad anatomy, morphing, messy broken legs decay, ((simple background)), deformed body, lowres, bad anatomy, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low jpeg artifacts, signature, watermark, username, blurry, out of focus, old, amateur drawing, odd, fat, morphing, black and white, ((simple background)), artifacts, signature, artist name, [blurry], disfigured, mutated, (poorly hands), messy broken legs, decay, painting, duplicate, closeup",
-
 # Init is ran on server startup
 # Load your model to GPU as a global variable here using the variable name "model"
 def init():
