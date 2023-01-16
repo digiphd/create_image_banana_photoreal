@@ -56,7 +56,7 @@ def inference(model_inputs:dict) -> dict:
     for image in images:
         buffered = BytesIO()
         image.save(buffered,format="JPEG")
-        images_base64.append(base64.b64encode(buffered.getvalue()).decode('utf-8'))
+        images_base64.append(list(str(base64.b64encode(buffered.getvalue()).decode('utf-8'))))
 
     # Return the results as a dictionary
     return {'images_base64': images_base64, 'image_base64': image_base64}
