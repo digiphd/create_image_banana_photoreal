@@ -45,7 +45,7 @@ def inference(model_inputs:dict) -> dict:
     
     # Run the model
     with autocast("cuda"):
-        images = model(prompt, negative_prompt=negative_prompt, height=height,width=width,num_inference_steps=num_inference_steps,guidance_scale=guidance_scale,generator=generator).images
+        images = model(prompt, negative_prompt=negative_prompt, height=height,width=width,num_inference_steps=num_inference_steps,guidance_scale=guidance_scale,generator=generator).images[0]
     print("number of images:",len(images))
 
     images_base64 = []
