@@ -1,7 +1,7 @@
 
 # 🍌 Modified Banana Serverless GPU processing
 
-This repo gives a basic framework for serving Stable Diffusion [Photoreal Model](https://huggingface.co/dreamlike-art/dreamlike-photoreal-2.0) in production using simple HTTP servers.
+This repo gives a basic framework for serving Stable Diffusion [Photoreal Model](https://huggingface.co/dreamlike-art/dreamlike-photoreal-2.0) model in production using simple HTTP servers. It is capable of returning up to 3 images at 512x512 without going over the 16GB hard limit on Banana GPU's
 
 Please note that this model can create Adult content. So be careful what you type. 
 
