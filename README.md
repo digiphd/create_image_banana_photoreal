@@ -1,11 +1,9 @@
 
-# 🍌 Banana Serverless
+# 🍌 Modified Banana Serverless GPU processing
 
-This repo gives a basic framework for serving Stable Diffusion in production using simple HTTP servers.
+This repo gives a basic framework for serving Stable Diffusion [Photoreal Model](https://huggingface.co/dreamlike-art/dreamlike-photoreal-2.0) in production using simple HTTP servers.
 
-## Instant Deploy
-Stable Diffusion is now available as a prebult model on Banana! [See how to deploy Stable Diffusion in seconds](https://docs.banana.dev/banana-docs/core-concepts/inference-server/1-click-deploy).
-
+Please note that this model can create Adult content. So be careful what you type. 
 
 # Quickstart
 
@@ -17,10 +15,8 @@ If you want to customize beyond the prebuilt model:
 
 ### Additional Steps (outside of quickstart guide)
 
-1. Create your own private repo and copy the files from this template repo into it. You'll want a private repo so that your huggingface keys are secure.
-2. Create huggingface account to get permission to download and run [Stable Diffusion](https://huggingface.co/CompVis/stable-diffusion-v1-4) text-to-image model.
-  - Accept terms and conditions for the use of the v1-4 [Stable Diffusion](https://huggingface.co/CompVis/stable-diffusion-v1-4)
-3. Edit the `dockerfile` in your forked repo with `ENV HF_AUTH_TOKEN=your_auth_token`
+1. Create your own private repo and copy the files from this template repo into it. You'll want a private repo so that your huggingface keys are secure or place it as an ENV variable called "ENV HF_AUTH_TOKEN".
+2. Edit the `dockerfile` in your forked repo with `ENV HF_AUTH_TOKEN=your_auth_token`
 
 
 # Helpful Links
@@ -31,4 +27,4 @@ Generalize this framework to [deploy anything on Banana](https://docs.banana.dev
 
 <br>
 
-## Use Banana for scale.
+
