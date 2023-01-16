@@ -17,6 +17,7 @@ EXPOSE 8000
 
 # Add your huggingface auth key here
 ENV HF_AUTH_TOKEN=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
+ENV PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.6,max_split_size_mb:12
 
 # Add your model weight files 
 # (in this case we have a python script)
