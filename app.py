@@ -48,6 +48,10 @@ def inference(model_inputs:dict) -> dict:
         images = model(prompt, negative_prompt=negative_prompt, height=height,width=width,num_inference_steps=num_inference_steps,guidance_scale=guidance_scale,generator=generator).images[0]
     print("number of images:",len(images))
 
+    buffered = BytesIO()
+    images.save(buffered, format="JPEG")
+    image_base64 = base64.b64encode(buffered.getvalue()).decode('utf-8')
+
     images_base64 = []
     for image in images:
 
@@ -56,4 +60,4 @@ def inference(model_inputs:dict) -> dict:
         images_base64.append(base64.b64encode(buffered.getvalue()).decode('utf-8'))
     print(len(images_base64))
     # Return the results as a dictionary
-    return {'images_base64': images_base64, 'image_base64': images_base64[0]}
+    return {'images_base64': images_base64, 'image_base64': image_base64}
