@@ -16,10 +16,7 @@ def download_model():
     )
 
     model = StableDiffusionPipeline.from_pretrained(
-        "dreamlike-art/dreamlike-photoreal-2.0",
-        scheduler=lms,
-        use_auth_token=HF_AUTH_TOKEN
-    )
+        "dreamlike-art/dreamlike-photoreal-2.0")
 
 if __name__ == "__main__":
     download_model()
